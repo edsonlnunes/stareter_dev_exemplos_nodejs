@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { growdeversDB } from "../db/growdevers";
 import { Growdever } from "../models/growdever.model";
 
 export class CreateGrowdeverController {
@@ -7,7 +8,7 @@ export class CreateGrowdeverController {
 
     const growdever = new Growdever(name, age, skills);
 
-    Growdever.growdevers.push(growdever);
+    growdeversDB.push(growdever);
 
     return response.status(200).json({
       uid: growdever.uid,

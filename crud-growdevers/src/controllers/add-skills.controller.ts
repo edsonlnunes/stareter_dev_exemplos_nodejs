@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { growdeversDB } from "../db/growdevers";
 import { Growdever } from "../models/growdever.model";
 
 export class AddSkillsController {
@@ -6,9 +7,7 @@ export class AddSkillsController {
     const { skills } = request.body;
     const { uid } = request.params;
 
-    const growdever = Growdever.growdevers.find(
-      (element) => element.uid === uid
-    );
+    const growdever = growdeversDB.find((element) => element.uid === uid);
 
     if (!growdever) {
       return response.status(404).json({ error: "Growdever não encontrado" });

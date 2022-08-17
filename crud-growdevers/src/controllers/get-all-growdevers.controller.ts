@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Growdever } from "../models/growdever.model";
+import { growdeversDB } from "../db/growdevers";
 
 export class GetAllGrowdeversController {
   getAll(request: Request, response: Response) {
-    const growdevers = Growdever.growdevers.map((element) => {
+    const growdevers = growdeversDB.map((element) => {
       return {
         uid: element.uid,
         name: element.name,

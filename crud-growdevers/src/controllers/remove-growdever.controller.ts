@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
+import { growdeversDB } from "../db/growdevers";
 import { Growdever } from "../models/growdever.model";
 
 export class RemoveGrowdeverController {
   remove(request: Request, response: Response) {
     const { uid } = request.params;
 
-    const indexGrowdever = Growdever.growdevers.findIndex(
+    const indexGrowdever = growdeversDB.findIndex(
       (element) => element.uid === uid
     );
 
@@ -13,7 +14,7 @@ export class RemoveGrowdeverController {
       return response.status(404).json({ error: "Growdever não encontrado" });
     }
 
-    Growdever.growdevers.splice(indexGrowdever, 1);
+    growdeversDB.splice(indexGrowdever, 1);
 
     return response.status(200).send();
   }

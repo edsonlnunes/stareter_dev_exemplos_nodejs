@@ -25,8 +25,6 @@ export class Growdever {
     return [...this._skills];
   }
 
-  static growdevers: Growdever[] = [];
-
   constructor(name: string, age: number, skills?: string[]) {
     this._uid = crypto.randomUUID();
     this._name = name;

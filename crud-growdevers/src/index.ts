@@ -9,4 +9,4 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(routes);
 
-app.listen(3333, () => console.log("Api running"));
+app.listen(8080, () => console.log("Api running"));
