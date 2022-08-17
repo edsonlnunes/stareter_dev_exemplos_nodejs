@@ -15,6 +15,7 @@ export class GetGrowdeverByUidController {
       uid: growdever.uid,
       name: growdever.name,
       age: growdever.age,
+      cpf: growdever.cpf,
       skills: growdever.skills,
       status: growdever.status,
     });

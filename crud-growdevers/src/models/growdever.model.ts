@@ -32,10 +32,17 @@ export class Growdever {
     return this._status;
   }
 
-  constructor(name: string, age: number, skills?: string[]) {
+  private _cpf: string;
+
+  get cpf(): string {
+    return this._cpf;
+  }
+
+  constructor(name: string, age: number, cpf: string, skills?: string[]) {
     this._uid = crypto.randomUUID();
     this._name = name;
     this._age = age;
+    this._cpf = cpf;
     this._skills = skills ?? [];
     this._status = "STUDYING";
   }

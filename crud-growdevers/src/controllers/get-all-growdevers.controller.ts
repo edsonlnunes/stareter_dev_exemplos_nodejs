@@ -10,6 +10,7 @@ export class GetAllGrowdeversController {
         uid: element.uid,
         name: element.name,
         age: element.age,
+        cpf: element.cpf,
         skills: element.skills,
         status: element.status,
       };
