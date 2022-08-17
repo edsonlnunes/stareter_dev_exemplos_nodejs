@@ -15,6 +15,7 @@ export class CreateGrowdeverController {
       name: growdever.name,
       age: growdever.age,
       skills: growdever.skills,
+      status: growdever.status,
     });
   }
 }

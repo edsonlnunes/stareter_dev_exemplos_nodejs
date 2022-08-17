@@ -25,11 +25,19 @@ export class Growdever {
     return [...this._skills];
   }
 
+  // 'STUDYING', 'GRADUATED', 'CANCELED'
+  private _status: string;
+
+  get status(): string {
+    return this._status;
+  }
+
   constructor(name: string, age: number, skills?: string[]) {
     this._uid = crypto.randomUUID();
     this._name = name;
     this._age = age;
     this._skills = skills ?? [];
+    this._status = "STUDYING";
   }
 
   addSkills(skills: string[]) {
@@ -50,11 +58,18 @@ export class Growdever {
     this._skills.splice(indexSkill, 1);
   }
 
-  updateInformation(name: string, age: number) {
+  updateInformation(name: string, age: number, status: string) {
     if (!name) throw new Error("Nome inválido");
     if (!age || age <= 0) throw new Error("Idade inválida");
 
+    if (!["STUDYING", "GRADUATED", "CANCELED"].some((s) => s === status)) {
+      throw new Error(
+        "Status nao suportado, tente: 'STUDYING', 'GRADUATED' ou 'CANCELED'"
+      );
+    }
+
     this._name = name;
     this._age = age;
+    this._status = status;
   }
 }
