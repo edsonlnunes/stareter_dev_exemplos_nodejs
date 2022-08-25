@@ -12,7 +12,11 @@ export class UpdateGrowdeverController {
       return response.status(404).json({ error: "Growdever não encontrado" });
     }
 
-    growdever.updateInformation(name, age, status);
+    try {
+      growdever.updateInformation(name, age, status);
+    } catch (err: any) {
+      return response.status(400).json({ error: err.message });
+    }
 
     return response.status(200).json({
       uid: growdever.uid,

@@ -12,7 +12,11 @@ export class RemoveSkillController {
       return response.status(404).json({ error: "Growdever não encontrado" });
     }
 
-    growdever.removeSkill(skill);
+    try {
+      growdever.removeSkill(skill);
+    } catch (err: any) {
+      return response.status(400).json({ error: err.message });
+    }
 
     return response.status(200).json({
       skills: growdever.skills,

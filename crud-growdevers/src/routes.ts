@@ -7,8 +7,8 @@ import { GetGrowdeverByUidController } from "./controllers/get-growdever-by-uid.
 import { RemoveGrowdeverController } from "./controllers/remove-growdever.controller";
 import { RemoveSkillController } from "./controllers/remove-skill.controller";
 import { UpdateGrowdeverController } from "./controllers/update-growdever.controller";
-import { ValidateCpfMiddleware } from "./middlewares/validate_cpf.middleware";
-import { VerifyCpfExistsMiddleware } from "./middlewares/verify_cpf_exists.middleware";
+import { ValidateCpfMiddleware } from "./middlewares/validate-cpf.middleware";
+import { VerifyCpfExistsMiddleware } from "./middlewares/verify-cpf-exists.middleware";
 
 const router = Router();
 
