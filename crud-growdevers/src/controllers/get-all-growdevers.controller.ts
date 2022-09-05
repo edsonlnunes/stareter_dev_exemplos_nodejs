@@ -16,16 +16,24 @@ export class GetAllGrowdeversController {
       };
     });
 
-    if (status) {
-      growdevers = growdevers.filter(
-        (g) => g.status.toUpperCase() === (status as string).toUpperCase()
-      );
-    }
+    if (status || name) {
+      growdevers = growdevers.filter((growdev) => {
+        let filtroStatus = false;
+        let filtroNome = false;
 
-    if (name) {
-      growdevers = growdevers.filter((g) =>
-        g.name.toLowerCase().includes((name as string).toLocaleLowerCase())
-      );
+        if (status) {
+          filtroStatus =
+            growdev.status.toUpperCase() === (status as string).toUpperCase();
+        }
+
+        if (name) {
+          filtroNome = growdev.name
+            .toLowerCase()
+            .includes((name as string).toLocaleLowerCase());
+        }
+
+        return filtroStatus || filtroNome;
+      });
     }
 
     return response.status(200).json(growdevers);
