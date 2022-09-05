@@ -18,21 +18,21 @@ export class GetAllGrowdeversController {
 
     if (status || name) {
       growdevers = growdevers.filter((growdev) => {
-        let filtroStatus = false;
-        let filtroNome = false;
+        let filterStatus = false;
+        let filterNome = false;
 
         if (status) {
-          filtroStatus =
+          filterStatus =
             growdev.status.toUpperCase() === (status as string).toUpperCase();
         }
 
         if (name) {
-          filtroNome = growdev.name
+          filterNome = growdev.name
             .toLowerCase()
             .includes((name as string).toLocaleLowerCase());
         }
 
-        return filtroStatus || filtroNome;
+        return filterStatus || filterNome;
       });
     }
 
