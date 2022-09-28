@@ -3,7 +3,7 @@ import { growdeversDB } from "../db/growdevers";
 
 export class UpdateGrowdeverController {
   update(request: Request, response: Response) {
-    const { name, age, status } = request.body;
+    const { name, birth, status } = request.body;
     const { uid } = request.params;
 
     const growdever = growdeversDB.find((element) => element.uid === uid);
@@ -13,7 +13,7 @@ export class UpdateGrowdeverController {
     }
 
     try {
-      growdever.updateInformation(name, age, status);
+      growdever.updateInformation(name, new Date(birth), status);
     } catch (err: any) {
       return response.status(400).json({ error: err.message });
     }
@@ -21,7 +21,7 @@ export class UpdateGrowdeverController {
     return response.status(200).json({
       uid: growdever.uid,
       name: growdever.name,
-      age: growdever.age,
+      birth: growdever.birth,
       cpf: growdever.cpf,
       skills: growdever.skills,
       status: growdever.status,

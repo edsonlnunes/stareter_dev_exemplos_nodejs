@@ -13,10 +13,10 @@ export class Growdever {
     return this._name;
   }
 
-  private _age: number;
+  private _birth: Date;
 
-  get age(): number {
-    return this._age;
+  get birth(): Date {
+    return this._birth;
   }
 
   private _skills: string[];
@@ -38,10 +38,10 @@ export class Growdever {
     return this._cpf;
   }
 
-  constructor(name: string, age: number, cpf: string, skills?: string[]) {
+  constructor(name: string, birth: Date, cpf: string, skills?: string[]) {
     this._uid = crypto.randomUUID();
     this._name = name;
-    this._age = age;
+    this._birth = birth;
     this._cpf = cpf;
     this._skills = skills ?? [];
     this._status = "STUDYING";
@@ -65,9 +65,11 @@ export class Growdever {
     this._skills.splice(indexSkill, 1);
   }
 
-  updateInformation(name: string, age: number, status: string) {
+  updateInformation(name: string, birth: Date, status: string) {
     if (!name) throw new Error("Nome inválido");
-    if (!age || age <= 0) throw new Error("Idade inválida");
+
+    if (!birth || isNaN(birth.getDate()))
+      throw new Error("Data de nascimento inválido");
 
     if (!["STUDYING", "GRADUATED", "CANCELED"].some((s) => s === status)) {
       throw new Error(
@@ -76,7 +78,7 @@ export class Growdever {
     }
 
     this._name = name;
-    this._age = age;
+    this._birth = birth;
     this._status = status;
   }
 }

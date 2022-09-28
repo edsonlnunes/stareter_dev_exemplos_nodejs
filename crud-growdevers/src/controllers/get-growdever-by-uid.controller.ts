@@ -14,7 +14,7 @@ export class GetGrowdeverByUidController {
     return response.status(200).json({
       uid: growdever.uid,
       name: growdever.name,
-      age: growdever.age,
+      birth: growdever.birth,
       cpf: growdever.cpf,
       skills: growdever.skills,
       status: growdever.status,
